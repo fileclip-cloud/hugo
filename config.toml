@@ -1,3 +1,4 @@
+baseURL = "https://fileclip-cloud.github.io/hugo/"
 [module]
   [module.hugoVersion]
     extended = true
