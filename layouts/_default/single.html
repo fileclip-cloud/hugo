@@ -42,11 +42,91 @@
     {{- with .Content -}}
       <div>
         {{ . | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `${1}<a href="#${2}" class="hanchor" ariaLabel="Anchor">&#8983;</a> ${3}` | safeHTML }}
-      </div> aaa
+      </div> 
+
+    <iframe
+       srcdoc="𝜃&nbsp;첨부파일"   
+         style="filter: blur(3px);opacity: 50%;" 
+   onload="this.removeAttribute('srcdoc')"      
+   src="https://front.fileclip.cloud/iframe/link#18"
+  frameborder="0"
+  name="__link18"
+  scrolling="no" 
+  loading="lazy" 
+  width="130" height="30"  
+  data-iconsrc="" 
+  data-btntext="" data-addbtntext=""
+  data-btncss=""  data-bg=""
+
+></iframe>
+<!--  
+  아래와 같이 버튼을 스타일이나 표시 언어에 따라 수정할 수 있습니다.
+  width="130" height="40"  // 버튼 표시 크기에 맞게 수정하면됩니다.
+  data-iconsrc="https://example/path/image.jpg" // 아이콘 이미지 주소를 지정하면 기본아이콘대신 표시됩니다. 
+  data-btntext="Attachments"  // 기본값은 "첨부파일"  
+  data-addbtntext="Enable Attachments"   //기본값은 "첨부생성"
+  data-btncss="background:#333;padding:3px"  // 버튼에 적용할 css 
+  data-bg="#333"   // iframe이 사용하는 배경색 기본값은 #fff                                                                                                                                                                                                                                                                     
+-->
+<script>
+  window.addEventListener("message", function (e) {
+    if (!e || !e.source || !e.data || !e.data.from == "ufiframe") return;
+    if(!e|| !e.origin|| (e.origin!="https://front.fileclip.cloud" ) ) return ;
+    const uf = e.data.uf;
+
+    if (!uf|| uf!= 18 ) return;
+    const iframe = document.querySelector('iframe[name="__link18"]');
+    if (!iframe)
+      return console.log("no frame found");
+
+    if (e.data.echo && uf) {
+      const ret = { ...e.data, ...iframe.dataset };
+      ret.name = "ret";
+
+      ret.host =
+        document.querySelector('link[rel="canonical"]')?.href ||
+        document.querySelector('meta[property="og:url"]')?.content ||
+        location.href;
+        /// ret.host 값을 기준으로 첨부폴더가 생성됩니다. 
+        /// 하나의 posting에 여러개의 주소를 가지고 있다면 ret.host에는 대표url 하나만 입력되도록 수정해주세요.
+
+       ret.hideCreateBtn  = location.href.indexOf("##")<0  ; 
+       //   생성버튼을 가리는 조건입니다. 주소에 ## 를 붙이면 생성버튼이 표시됩니다. 
+       //이와 별도로 shift 키를 누르면 생성버튼이  표시됩니다.
+      ret.title = document.title;
+     
+      let evt;
+      document.addEventListener('keydown',evt= (event) => {
+      if (event.key === 'Shift') {
+        ret.name="callback";
+        ret.showbtn=1;
+        document.removeEventListener('keydown',evt)
+        e.source.postMessage(ret, e.origin);
+      }
+    });
+
+      if (!document.startViewTransition) {
+          e.source.postMessage(ret, e.origin);
+     iframe.removeAttribute("style");
+  
+
+  } else {
+     document.startViewTransition(()=>{
+    e.source.postMessage(ret, e.origin);
+        iframe.removeAttribute("style");
+       
+
+    });
+  }
+    
+
+    }
+  });
+</script>
     {{- end -}}
-    bbb
+  
   </div>
-ccc
+
   {{ if eq .Type $.Site.Params.contentTypeName }}
     {{ partial "posts_pagination.html" . }}
   {{ end }}
