@@ -44,7 +44,7 @@
         {{ . | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `${1}<a href="#${2}" class="hanchor" ariaLabel="Anchor">&#8983;</a> ${3}` | safeHTML }}
       </div> 
 
-    <iframe
+   <iframe
        srcdoc="𝜃&nbsp;첨부파일"   
          style="filter: blur(3px);opacity: 50%;" 
    onload="this.removeAttribute('srcdoc')"      
@@ -55,8 +55,9 @@
   loading="lazy" 
   width="130" height="30"  
   data-iconsrc="" 
+  data-iconcss="color:wheat"
   data-btntext="" data-addbtntext=""
-  data-btncss=""  data-bg="#222129"
+  data-btncss="color:wheat"  data-bg="#222129"
 
 ></iframe>
 <!--  
