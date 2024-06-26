@@ -42,10 +42,11 @@
     {{- with .Content -}}
       <div>
         {{ . | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `${1}<a href="#${2}" class="hanchor" ariaLabel="Anchor">&#8983;</a> ${3}` | safeHTML }}
-      </div>
+      </div> aaa
     {{- end -}}
+    bbb
   </div>
-
+ccc
   {{ if eq .Type $.Site.Params.contentTypeName }}
     {{ partial "posts_pagination.html" . }}
   {{ end }}
