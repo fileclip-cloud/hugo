@@ -10,4 +10,4 @@ description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam n
 [파일제출함 데모](https://fileclip-cloud.github.io/hugo/posts/submitdemo/)도 사용해보세요. 
 
 
-{{<file>}}
+{{< file >}}
