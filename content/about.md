@@ -14,6 +14,6 @@ This theme is pretty basic and covers all of the essentials. All you have to do 
 
 The theme includes:
 
-{{< file >}}
+{{<file>}}
 
     
