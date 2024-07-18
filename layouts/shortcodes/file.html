@@ -46,7 +46,7 @@
       if(!ret.bg) while (element && element !== document.body) {
         const style = window.getComputedStyle(element);
         const bgColor = style.backgroundColor;
-      
+             console.log(bgColor);
         if (!/^rgba\(0,\s*0,\s*0,\s*0\)$/.test(bgColor) && bgColor !== 'transparent') {
             ret.bg= bgColor;
           break;
