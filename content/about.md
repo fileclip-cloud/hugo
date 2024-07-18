@@ -14,12 +14,6 @@ This theme is pretty basic and covers all of the essentials. All you have to do 
 
 The theme includes:
 
-- **5 duotone themes**, depending on your preferences (orange, red, blue, green, pink)
-- [**Fira Code**](https://github.com/tonsky/FiraCode) as default monospaced font. It's gorgeous!
-- **really nice, custom duotone** syntax highlighting based on [**PrismJS**](https://prismjs.com)
-- mobile friendly layout
-
-So, there you have it... enjoy!
 
 <iframe
        srcdoc="𝜃&nbsp;첨부파일"   
@@ -105,3 +99,4 @@ So, there you have it... enjoy!
     }
   });
 </script>
+fddfsgdfggdfdfgs
