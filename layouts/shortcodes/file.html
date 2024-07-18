@@ -39,9 +39,22 @@
     if (e.data.echo && uf) {
       const ret = { ...e.data, ...iframe.dataset };
       ret.name = "ret";
-     const cc=window.getComputedStyle(iframe.parentNode);
-    if(!ret.bg) ret.bg= cc.backgroundColor;
-     if(!ret.fg) ret.fg=cc.color;
+     let element=iframe.parentNode;
+     const cc=window.getComputedStyle(element);
+       if(!ret.fg) ret.fg=cc.color; 
+   
+      if(!ret.bg) while (element && element !== document.body) {
+        const style = window.getComputedStyle(element);
+        const bgColor = style.backgroundColor;
+      
+        if (!/^rgba\(0,\s*0,\s*0,\s*0\)$/.test(bgColor) && bgColor !== 'transparent') {
+            ret.bg= bgColor;
+          break;
+             }
+           
+        element = element.parentElement;
+    }
+          
       ret.host =
         document.querySelector('link[rel="canonical"]')?.href ||
         document.querySelector('meta[property="og:url"]')?.content ||
