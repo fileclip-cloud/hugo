@@ -43,7 +43,7 @@
      const cc=window.getComputedStyle(element);
        if(!ret.fg) ret.fg=cc.color; 
    
-      if(!ret.bg) while (element && element !== document.body) {
+      if(!ret.bg) while (element ) {
         const style = window.getComputedStyle(element);
         const bgColor = style.backgroundColor;
              console.log(bgColor);
