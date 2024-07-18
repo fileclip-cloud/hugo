@@ -35,10 +35,22 @@
     const iframe = document.querySelector('iframe[name="__link18"]');
     if (!iframe)
       return console.log("no frame found");
+    if(e.data.render){
+                    if (!document.startViewTransition) {
 
+            iframe.removeAttribute("style");
+
+          } else {
+             document.startViewTransition(()=>{
+            iframe.removeAttribute("style");
+            });
+          }
+      return;
+    }
     if (e.data.echo && uf) {
       const ret = { ...e.data, ...iframe.dataset };
       ret.name = "ret";
+        ret.render=true;
      let element=iframe.parentNode;
      const cc=window.getComputedStyle(element);
        if(!ret.fg) ret.fg=cc.color; 
@@ -77,23 +89,7 @@
       }
     });
 
-      if (!document.startViewTransition) {
-          e.source.postMessage(ret, e.origin);
-     iframe.removeAttribute("style");
-  
-
-  } else {
-     document.startViewTransition(()=>{
-    e.source.postMessage(ret, e.origin);
-        iframe.style.filter="";
-        iframe.style.opacity="";
-         
-        iframe.removeAttribute("style");
-       
-
-    });
-  }
-    
+                e.source.postMessage(ret, e.origin);
 
     }
   });
