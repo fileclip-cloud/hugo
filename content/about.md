@@ -17,4 +17,3 @@ The theme includes:
 {{<file>}}
 
     
-fddfsgdfggdfdfgs
